@@ -7,16 +7,16 @@
     <title>Coffe Break</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    
-</head>
-<body>
+  </head>
+  <body>
+  <script src="js/main.js"></script>
   <div id="cadastro">
     <h1>Bem vindo ao nosso coffee break</h1>
     <h2>Preencha nosso formulário</h2>
-    <Form id="form">
+    <form id="form" >
       <div id="full-box">
         <label for="name">Nome</label>
-        <input type="text" name="name" id="nome" placeholder="Nome completo">
+        <input type="text" id="name" placeholder="Nome completo">
       </div>
       <div id="half-box">
         <label>CPF</label>
@@ -31,11 +31,13 @@
         <label for="agreement" id="agreement-label">Me comprometo em trazer os itens acima </label>
       </div>
       <div id="full-box">
-        <input type="submit"  id="btn-submit" value="Enviar">
+        <input type="submit"  id="btn-submit" value="Enviar" onclick="cadastrarFunc()">
+        <input type="submit"  id="btn-listar" value="Lista de participantes" onclick="listar()">
       </div>
-    </Form>
+    </form>
   </div>
-  <p class="erro-validacao"></p>
-  <script src="js/main.js"></script>
+  <div class="lista">Listagem</div>
+  <p class="validacao template"></p>
+  
 </body>
 </html>
