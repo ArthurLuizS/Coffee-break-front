@@ -40,12 +40,12 @@ body{
     flex-wrap: wrap;
     justify-content: space-between;
 }
-.full-box{
-    flex: 1 1 100%;
+#full-box{
+    flex:1 1 100%;
     position: relative;
 }
-.half-box{
-    flex: 1 1 45%;
+#hal-fbox{
+    flex: 1 1 50%;
 }
 
 label{
@@ -78,4 +78,15 @@ margin-right: 5px;
 #agreement, #agreement-label{
     display: inline-block;
     width: auto;    
+}
+
+/*validacao*/
+.validacao{
+    color:rgb(182, 101, 101);
+    position: absolute;
+    top: 57px;
+    font-size: .9rem;
+}
+.template{
+    display: none;
 }
