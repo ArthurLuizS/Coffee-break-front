@@ -1,3 +1,5 @@
+//import { cadastrar } from "./request.js";
+
 const url = "http://localhost:8080/funcionarios"
 const url2 = "http://localhost:8080/funcionarios/cadastrar"
 
@@ -16,21 +18,63 @@ function cadastrarFunc() {
         "alimento": alimento
     };
 
-    cadastrar(url, funcionario);
+    cadastrar(url2, funcionario);
+
+}
+function cadastrar(url, funcionario){
+    event.preventDefault();
+// console.log("funcionario = ", funcionario)
+axios.post(url, funcionario)
+     .then(response =>  {
+         console.log(JSON.stringify(response.data))
+         listar()
+     })
+     
+     .catch(error => alert( error.response.data.message)) 
+}
+
+
+function criaLinha(funcionario){
+    linha = document.createElement("tr");
+    tdNome = document.createElement("td");
+    tdAlimento = document.createElement("td");
+
+    tdNome.innerHTML = funcionario.nome;
+    tdAlimento.innerHTML = funcionario.alimento;
+
+    linha.appendChild(tdNome);
+    linha.appendChild(tdAlimento);
+
+    return linha;
 
 }
 
 function listar(){
-    let lista = document.getElementsByClassName("#lista")
+    let tabela = document.getElementById("tabela")
+    tabela.innerText = "";
+    let funcionarios;
     event.preventDefault();
     axios.get(url)
     .then(response =>{
-        console.log(response)
-        const data = response.data
-   lista.textContent = JSON.stringify(data)
+        funcionarios = response.data
+        console.log(funcionarios)
+      //  ListarFuncionarios(funcionarios)
+      funcionarios.forEach(element =>{
+          let linha = criaLinha(element);
+          tabela.appendChild(linha);
+      })
+        
     })
     .catch(error => console.log(error))
 }
+
+function focar(){
+    event.preventDefault();
+    let tabela = document.getElementById("tabela");
+    tabela.focus();
+
+}
+
 /*
 const novoFunc = {
     nome: "Leticia",
@@ -49,11 +93,4 @@ function getFunc() {
 
 getFunc()
 */
-function cadastrar(url, funcionario){
- //   event.preventDefault();
-   // console.log("funcionario = ", funcionario)
-   axios.post(url, funcionario)
-        .then(response =>  
-            console.log(JSON.stringify(response.data)))
-        .catch(error => alert( error.response.data.message)) 
-}
+
