@@ -38,12 +38,17 @@ function criaLinha(funcionario){
     linha = document.createElement("tr");
     tdNome = document.createElement("td");
     tdAlimento = document.createElement("td");
+    tdEditar = document.createElement("td")
+    
 
+    //tdEditar.innerAtribute = href="https://www.w3schools.com";
+    tdEditar.innerHTML = `<a href="http://127.0.0.1:5500/tela2.html">Editar<a/>`;
     tdNome.innerHTML = funcionario.nome;
     tdAlimento.innerHTML = funcionario.alimento;
 
     linha.appendChild(tdNome);
     linha.appendChild(tdAlimento);
+    linha.appendChild(tdEditar)
 
     return linha;
 
